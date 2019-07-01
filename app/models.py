@@ -14,12 +14,12 @@ class User(db.Model):
         return '<User {}>'.format(self.username)
 
 
-class Post(db.model):
+class Post(db.Model):
     """Basic class representing blog posts written by users."""
-    id = db.Column(db.integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    user_id = db.Column(db.integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
