@@ -88,8 +88,4 @@ class UserModelCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     unittest.main(verbosity=2)
-=======
-    unittest.main(verbosity=2)
->>>>>>> e0c7620501f36ed85df5a7eccd65bc291e711d09
