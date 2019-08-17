@@ -16,6 +16,12 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 
+class ResetPasswordRequestForm(FlaskForm):
+    """Form for resetting forgotten user password."""
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+
 class RegistrationForm(FlaskForm):
     """All the included fields in a Microblog registration form"""
     username = StringField('Username', validators=[DataRequired()])
