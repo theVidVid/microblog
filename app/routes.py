@@ -32,7 +32,7 @@ def index():
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(
         page, app.config['POSTS_PER_PAGE'], False)
-    next_url: Optional[Any] = url_for('index', page=posts.next_num) \
+    next_url = url_for('index', page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
         if posts.has_prev else None
