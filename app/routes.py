@@ -1,5 +1,3 @@
-from typing import Optional, Any
-
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -108,7 +106,7 @@ def reset_password(token):
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.set_password(form.password.data)
-        db.sesssion.commit()
+        db.session.commit()
         flash('Your password has ben reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
