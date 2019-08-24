@@ -126,3 +126,6 @@ dmypy.json
 
 # IDEA settings
 .idea/
+
+# Babel portable object template
+messages.pot
