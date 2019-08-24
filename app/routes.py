@@ -1,14 +1,16 @@
-from flask import render_template, flash, redirect, url_for, request, g
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_babel import _, get_locale
 from werkzeug.urls import url_parse
 from app import app, db
 from app.models import User, Post
+from app.translate import translate
 from datetime import datetime
 from app.email import send_password_reset_email
 from guess_language import guess_language
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
+from flask import render_template, flash, redirect, url_for, request, g, \
+    jsonify
 
 
 @app.before_request
@@ -202,3 +204,11 @@ def unfollow(username):
     flash(_('You are are no longer following %(username)s.',
             username=username))
     return redirect(url_for('user', username=username))
+
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({'text': translate(request.form['text'],
+                                      request.form['source_language'],
+                                      request.form['dest_language'])})
