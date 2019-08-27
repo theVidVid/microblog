@@ -22,8 +22,8 @@ def before_request():
     g.locale = str(get_locale())
 
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/index', methods=['GET', 'POST'])
 @login_required
 # Home page route.
 def index():
@@ -50,7 +50,7 @@ def index():
                            prev_url=prev_url)
 
 
-@app.route('/explore')
+@bp.route('/explore')
 @login_required
 def explore():
     page = request.args.get('page', 1, type=int)
@@ -65,7 +65,7 @@ def explore():
                            prev_url=prev_url)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 # Login page route
 def login():
     if current_user.is_authenticated:
@@ -75,7 +75,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash(_('Invalid username or password'))
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -84,14 +84,14 @@ def login():
     return render_template('login.html', title=_('Sign-in'), form=form)
 
 
-@app.route('/logout')
+@bp.route('/logout')
 # Logout page route
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-@app.route('/reset_password_request', methods=['GET', 'POST'])
+@bp.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -102,12 +102,12 @@ def reset_password_request():
             send_password_reset_email(user)
         flash(
             _('Check your email for instructions to reset your password'))
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('reset_password_request.html',
                            title=_('Reset Password'), form=form)
 
 
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+@bp.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -119,11 +119,11 @@ def reset_password(token):
         user.set_password(form.password.data)
         db.session.commit()
         flash(_('Your password has been reset.'))
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('reset_password.html', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@bp.route('/register', methods=['GET', 'POST'])
 # Registration page route
 def register():
     if current_user.is_authenticated:
@@ -135,11 +135,11 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash(_('Congratulations, you are now a registered user!'))
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('register.html', title=_('Register'), form=form)
 
 
-@app.route('/user/<username>')
+@bp.route('/user/<username>')
 @login_required
 # A user's profile page route
 def user(username):
@@ -155,7 +155,7 @@ def user(username):
                            next_url=next_url, prev_url=prev_url)
 
 
-@app.route('/edit_profile', methods=['GET', 'POST'])
+@bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 # Page for editing a user's username and to create an about me section.
 def edit_profile():
@@ -173,7 +173,7 @@ def edit_profile():
                            form=form)
 
 
-@app.route('/follow/<username>')
+@bp.route('/follow/<username>')
 @login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
@@ -189,7 +189,7 @@ def follow(username):
     return redirect(url_for('user', username=username))
 
 
-@app.route('/unfollow/<username>')
+@bp.route('/unfollow/<username>')
 @login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
@@ -206,7 +206,7 @@ def unfollow(username):
     return redirect(url_for('user', username=username))
 
 
-@app.route('/translate', methods=['POST'])
+@bp.route('/translate', methods=['POST'])
 @login_required
 def translate_text():
     return jsonify({'text': translate(request.form['text'],
