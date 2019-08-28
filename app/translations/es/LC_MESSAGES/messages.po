@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-27 21:19-0700\n"
+"POT-Creation-Date: 2019-08-28 16:50-0700\n"
 "PO-Revision-Date: 2019-08-27 21:18-0700\n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -46,7 +46,7 @@ msgstr "Contraseña"
 msgid "Remember Me"
 msgstr "Recuérdame"
 
-#: app/auth/forms.py:13 app/templates/auth/login.html:5
+#: app/auth/forms.py:13 app/auth/routes.py:28 app/templates/auth/login.html:5
 msgid "Sign In"
 msgstr "Iniciar sesión"
 
@@ -58,7 +58,7 @@ msgstr "Email"
 msgid "Repeat Password"
 msgstr "Repita contraseña"
 
-#: app/auth/forms.py:24 app/auth/routes.py:52
+#: app/auth/forms.py:24 app/auth/routes.py:49
 #: app/templates/auth/register.html:5
 msgid "Register"
 msgstr "Regístrate"
@@ -75,27 +75,23 @@ msgstr "Por favor utilice un email diferente."
 msgid "Request Password Reset"
 msgstr "Petición de restablecimiento de contraseña"
 
-#: app/auth/routes.py:22
+#: app/auth/routes.py:21
 msgid "Invalid username or password"
 msgstr "Nombre de usuario o contraseña invalida"
 
-#: app/auth/routes.py:29
-msgid "Sign-in"
-msgstr "Iniciar-sesión"
-
-#: app/auth/routes.py:50
+#: app/auth/routes.py:47
 msgid "Congratulations, you are now a registered user!"
 msgstr "Felicidades, ahora eres un usuario registrado!"
 
-#: app/auth/routes.py:65
-msgid "Check your email for instructions to reset your password"
-msgstr "Revise su email para obtener instrucciones para restablecer su contraseña"
+#: app/auth/routes.py:63
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
 
-#: app/auth/routes.py:68 app/templates/auth/reset_password_request.html:5
+#: app/auth/routes.py:66 app/templates/auth/reset_password_request.html:5
 msgid "Reset Password"
 msgstr "Restablecer la contraseña"
 
-#: app/auth/routes.py:82
+#: app/auth/routes.py:80
 msgid "Your password has been reset."
 msgstr "Tu contraseña has sido restablecida."
 
@@ -262,4 +258,12 @@ msgstr ""
 
 #~ msgid "Click to Reset"
 #~ msgstr "Oprime para Restablecer"
+
+#~ msgid "Sign-in"
+#~ msgstr "Iniciar-sesión"
+
+#~ msgid "Check your email for instructions to reset your password"
+#~ msgstr ""
+#~ "Revise su email para obtener "
+#~ "instrucciones para restablecer su contraseña"
 

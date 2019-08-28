@@ -25,6 +25,7 @@ Mako==1.0.12
 MarkupSafe==1.1.1
 mccabe==0.6.1
 pkg-resources==0.0.0
+pyenchant==2.0.0
 PyJWT==1.7.1
 pylint==2.3.1
 python-dateutil==2.8.0
