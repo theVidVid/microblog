@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-08-27 18:15-0700\n"
+"POT-Creation-Date: 2019-08-27 21:08-0700\n"
 "PO-Revision-Date: 2019-08-24 17:29-0700\n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -223,20 +223,20 @@ msgid "Unfollow"
 msgstr "Dejar de seguir"
 
 #: app/templates/auth/login.html:13
-msgid "Forgot your password?"
-msgstr "Olvidaste tu contraseña?"
-
-#: app/templates/auth/login.html:14
-msgid "Click to Reset It"
-msgstr ""
-
-#: app/templates/auth/login.html:17
 msgid "New User?"
 msgstr "Nuevo Usuario?"
 
-#: app/templates/auth/login.html:18
+#: app/templates/auth/login.html:14
 msgid "Click to Register!"
 msgstr "Oprime para registrarse!"
+
+#: app/templates/auth/login.html:17
+msgid "Forgot your password?"
+msgstr "Olvidaste tu contraseña?"
+
+#: app/templates/auth/login.html:18
+msgid "Click to Reset It"
+msgstr ""
 
 #: app/templates/auth/reset_password.html:5
 msgid "Reset Your Password"
