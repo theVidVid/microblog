@@ -14,9 +14,9 @@ class SearchForm(FlaskForm):
             kwargs['formdata'] = request.args
         if 'csrf_enabled' not in kwargs:
             kwargs['csrf_enabled'] = False
-        super(SearchForm, self, *args, **kwargs)
+        super(SearchForm, self).__init__(*args, **kwargs)
 
-        
+
 class EditProfileForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
     about_me = TextAreaField(_l('About me'),
