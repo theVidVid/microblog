@@ -133,3 +133,6 @@ dmypy.json
 
 # Babel portable object template
 messages.pot
+
+# html templates
+.htmlhintrc
