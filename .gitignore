@@ -64,7 +64,7 @@ db.sqlite3
 # Flask stuff:
 instance/
 .webassets-cache
-/home/thevidvid/microblog/app.db
+app.db
 
 # Scrapy stuff:
 .scrapy
