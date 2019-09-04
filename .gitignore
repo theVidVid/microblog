@@ -137,3 +137,4 @@ messages.pot
 
 # html templates
 .htmlhintrc
+mb_env/include/
