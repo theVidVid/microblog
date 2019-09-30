@@ -5,7 +5,8 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from guess_language import guess_language
 from app import db
-from app.main.forms import EditProfileForm, PostForm, SearchForm
+from app.main.forms import EditProfileForm, PostForm, SearchForm, \
+    DeletePostForm
 from app.models import User, Post
 from app.translate import translate
 from app.main import bp
@@ -47,7 +48,21 @@ def index():
     return render_template('index.html', title=_('Home'), form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
+    
 
+@bp.route('/delete', methods=['GET', 'POST'])
+@login_required
+def delete():
+    form = DeletePostForm()
+    post = Post(body=form.post.data, author=current_user)
+    if post.author == current_user:
+        db.session.delete(post)
+        db.session.commit()
+        flash(_('Your post was deleted.'))
+    else:
+        flash(_('You cannot delete another user\'s post.'))
+    return redirect('/')
+    
 
 @bp.route('/explore')
 @login_required
