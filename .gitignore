@@ -138,3 +138,6 @@ messages.pot
 # html templates
 .htmlhintrc
 mb_env/include/
+
+# Elasticsearch error handling
+elasticsearch.txt
