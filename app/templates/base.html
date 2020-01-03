@@ -47,9 +47,11 @@
               <a href="{{ url_for('main.messages') }}">
                 {{ _('Messages') }}
                 {% set new_messages = current_user.new_messages() %}
-                {% if new_messages %}
-                  <span class="badge badge-info">{{ new_messages }}</span>
-                {% endif %}
+                <span class="badge badge-pill badge-success" id="message_count"
+                  style="visibility: {% if new_messages %}visible
+                                     {% else %}hidden{% endif %};">
+                  {{ new_messages }}
+                </span>
               </a>
             </li>
             <li>
@@ -97,13 +99,13 @@
       });
     }
     $(function () {
-      var timer = null;
-      var xhr = null;
-      $('.user_popup').hover(
+        let timer = null;
+        let xhr = null;
+        $('.user_popup').hover(
         function(event) {
           // mouse in event handler
-          var elem = $(event.currentTarget);
-          timer = setTimeout(function() {
+            const elem = $(event.currentTarget);
+            timer = setTimeout(function() {
             timer = null;
             // popup logic goes here
             xhr = $.ajax(
@@ -124,8 +126,8 @@
       },
       function(event) {
         // mouse out event handler
-        var elem = $(event.currentTarget);
-        if (timer) {
+          const elem = $(event.currentTarget);
+          if (timer) {
           clearTimeout(timer);
           timer = null;
         }
@@ -140,5 +142,9 @@
         }
       );
     });
+    function set_message_count(n) {
+          $('#message_count').text(n);
+          $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+      }
   </script>
 {% endblock %}
